@@ -1,0 +1,11 @@
+                        int remainingTime = Math.max(
+                            1,
+                            (int)(stopSleepTime - System.currentTimeMillis())
+                            );
+
+                        while (remainingTime > 10 && !interrupted)
+                        {
+                            Thread.sleep(Math.min(1, remainingTime));
+
+                            remainingTime = (int)(stopSleepTime - System.currentTimeMillis());
+                        }

@@ -1,0 +1,13 @@
+                        // We force a sleep of at least 100 ms after every interation (unless
+                        // we were interrupted).
+                        int remainingTime = Math.max(
+                            100,
+                            (int)(stopSleepTime - System.currentTimeMillis())
+                            );
+
+                        while (remainingTime > 10 && !interrupted)
+                        {
+                            Thread.sleep(Math.min(100, remainingTime));
+
+                            remainingTime = (int)(stopSleepTime - System.currentTimeMillis());
+                        }
