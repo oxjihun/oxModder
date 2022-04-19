@@ -55,7 +55,7 @@ class Revs: # 수정사항 class
             for res in result:
                 file.write(res)
 
-MOD_NAME = "toy_oxMod"
+MOD_NAME = "toy-oxMod-v" + "0.0"
 sys.excepthook = showExceptionAndExit
 
 # main
@@ -86,6 +86,12 @@ shutil.copyfile("docs/config_original.xml", "config.xml")
 config = Revs("config.xml", Rev(4, 2, "co.txt", 2, "cm.txt"))
 config.execute()
 os.remove("revisions/cm.txt")
+
+# make clean.bat
+with open("clean.bat", 'w') as file:
+    file.write(f"del {MOD_NAME}.jar\n")
+    file.write(f"del {MOD_NAME}.exe\n")
+    file.write(f"del config.xml\n")
 
 # move image
 os.remove(MOD_NAME + "/images/splashBackground.jpg")
